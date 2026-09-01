@@ -74,10 +74,10 @@ fun PortfolioScreen() {
                 SectionTitle("Habilidades", "01")
                 SkillsGrid(columns = if (compact) 1 else 3)
                 Spacer(Modifier.height(56.dp))
-                SectionTitle("Projetos em destaque", "02")
+                SectionTitle("Destaques & certificações", "02")
                 ProjectsGrid(columns = if (compact) 1 else 3)
                 Spacer(Modifier.height(56.dp))
-                SectionTitle("Últimos trabalhos", "03")
+                SectionTitle("Trajetória", "03")
                 JobsList()
                 Spacer(Modifier.height(40.dp))
                 Footer(compact)
@@ -145,7 +145,7 @@ private fun HeroIntro() {
     ) {
         Box(Modifier.size(8.dp).background(PortfolioColors.Success, CircleShape))
         Spacer(Modifier.width(8.dp))
-        Text("Disponível para projetos", color = PortfolioColors.TextPrimary, fontSize = 12.sp)
+        Text(PortfolioData.AVAILABILITY, color = PortfolioColors.TextPrimary, fontSize = 12.sp)
     }
     Spacer(Modifier.height(24.dp))
     Text(PortfolioData.NAME, color = PortfolioColors.TextPrimary, fontSize = 48.sp, fontWeight = FontWeight.Bold, lineHeight = 54.sp)
@@ -192,7 +192,7 @@ private fun ContactCard(modifier: Modifier) {
         }
         Spacer(Modifier.height(20.dp))
         InfoRow("Email", PortfolioData.EMAIL)
-        InfoRow("Base", PortfolioData.BASE)
+        InfoRow("Empresa", PortfolioData.BASE)
         InfoRow("Foco", PortfolioData.FOCUS)
     }
 }
@@ -284,7 +284,7 @@ private fun JobsList() {
         PortfolioData.jobs.forEach { job ->
             Card(Modifier.fillMaxWidth(), padding = 20.dp) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(job.year, color = PortfolioColors.TextMuted, fontSize = 12.sp, modifier = Modifier.width(48.dp))
+                    Text(job.year, color = PortfolioColors.TextMuted, fontSize = 12.sp, modifier = Modifier.width(56.dp))
                     Box(Modifier.width(1.dp).height(36.dp).background(PortfolioColors.SurfaceBorder))
                     Spacer(Modifier.width(20.dp))
                     Column(Modifier.weight(1f)) {
@@ -324,7 +324,7 @@ private fun Footer(compact: Boolean) {
 
 @Composable
 private fun FooterCopyright() {
-    Text("© 2024 ${PortfolioData.NAME} — Todos os direitos reservados", color = PortfolioColors.TextMuted, fontSize = 13.sp)
+    Text("© 2026 ${PortfolioData.NAME} — Todos os direitos reservados", color = PortfolioColors.TextMuted, fontSize = 13.sp)
 }
 
 @Composable

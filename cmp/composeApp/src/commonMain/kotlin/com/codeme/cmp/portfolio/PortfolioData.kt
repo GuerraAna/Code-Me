@@ -7,45 +7,48 @@ data class Project(val name: String, val year: String, val description: String)
 data class Job(val year: String, val company: String, val role: String, val active: Boolean)
 
 object PortfolioData {
-    const val NAME = "Ravi Vex"
-    const val INITIALS = "RV"
-    const val ROLE = "Product Designer"
-    const val LOCATION = "Lisboa, Portugal"
-    const val EMAIL = "ravi@vex.design"
-    const val BASE = "Lisboa, PT"
-    const val FOCUS = "Produto & UI"
+    const val NAME = "Ana Clara Guerra"
+    const val INITIALS = "AG"
+    const val ROLE = "Engenheira de Software"
+    const val LOCATION = "Brasil"
+    const val EMAIL = "seu@email.com"
+    const val BASE = "Itaú Unibanco"
+    const val FOCUS = "Android & Kotlin"
+    const val AVAILABILITY = "Engenheira de Software no Itaú Unibanco"
     const val BIO =
-        "Designer de produto em Lisboa, criando interfaces digitais com clareza e intenção. " +
-            "Foco em sistemas de design, prototipagem e colaboração com times de engenharia."
+        "Desde criança, sou apaixonada por tecnologia e design. Em 2021 iniciei a jornada em " +
+            "Análise e Desenvolvimento de Sistemas e, desde então, venho me aprimorando em arquitetura, " +
+            "boas práticas e desenvolvimento Android, compartilhando conhecimento em artigos, lives e vídeos " +
+            "no Discord, YouTube e DIO."
 
     val navItems = listOf("Sobre", "Habilidades", "Projetos", "Trabalhos")
 
     val stats = listOf(
-        "6+" to "Anos de experiência",
-        "48" to "Projetos entregues",
-        "12" to "Prêmios",
+        "2021" to "Início na tecnologia",
+        "5+" to "Certificações",
+        "3" to "Plataformas de conteúdo",
     )
 
     val skills = listOf(
-        Skill("Design de Produto", 0.95f),
-        Skill("Prototipagem", 0.90f),
-        Skill("UI / Figma", 0.88f),
-        Skill("Motion Design", 0.82f),
-        Skill("Front-end (React)", 0.74f),
-        Skill("Pesquisa UX", 0.85f),
+        Skill("Android", 0.90f),
+        Skill("Kotlin", 0.90f),
+        Skill("Arquitetura & Boas práticas", 0.85f),
+        Skill("Testes", 0.80f),
+        Skill("AWS", 0.70f),
+        Skill("Comunicação & Conteúdo", 0.88f),
     )
 
     val projects = listOf(
-        Project("Nimbus Bank", "2024", "Redesign de conta digital com foco em acessibilidade."),
-        Project("Voyage OS", "2024", "Sistema de design para plataforma de viagens."),
-        Project("Pulse Metrics", "2023", "Painel de analytics em tempo real para SaaS B2B."),
+        Project("Segurança na nuvem com AWS", "DIO", "Certificado de conclusão do bootcamp de segurança na nuvem."),
+        Project("Monitoramento e análise na AWS", "DIO", "Certificado de monitoramento e análise de workloads na AWS."),
+        Project("Code-Me", "2026", "App multiplataforma (Android, iOS e Web) com Compose Multiplatform."),
     )
 
     val jobs = listOf(
-        Job("2024", "Lumen Studio", "Lead Product Designer", active = true),
-        Job("2022", "Orbit Labs", "Senior UI Designer", active = false),
-        Job("2019", "Kite Agency", "UI Designer", active = false),
+        Job("Atual", "Itaú Unibanco", "Engenheira de Software", active = true),
+        Job("2021", "DIO / Alura / Udemy", "Criadora de conteúdo e estudante", active = false),
+        Job("2021", "Análise e Desenvolvimento de Sistemas", "Graduação", active = false),
     )
 
-    val socialLinks = listOf("LinkedIn", "Dribbble", "GitHub")
+    val socialLinks = listOf("LinkedIn", "GitHub", "YouTube")
 }
