@@ -30,6 +30,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
@@ -329,9 +330,15 @@ private fun FooterCopyright() {
 
 @Composable
 private fun FooterLinks() {
+    val uriHandler = LocalUriHandler.current
     Row(horizontalArrangement = Arrangement.spacedBy(20.dp)) {
         PortfolioData.socialLinks.forEach { link ->
-            Text(link, color = PortfolioColors.TextSecondary, fontSize = 13.sp)
+            Text(
+                text = link.label,
+                color = PortfolioColors.TextSecondary,
+                fontSize = 13.sp,
+                modifier = Modifier.clickable { uriHandler.openUri(link.url) },
+            )
         }
     }
 }

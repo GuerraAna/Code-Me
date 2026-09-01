@@ -4,6 +4,8 @@ data class Skill(val name: String, val level: Float)
 
 data class Project(val name: String, val year: String, val description: String)
 
+data class SocialLink(val label: String, val url: String)
+
 data class Job(val year: String, val company: String, val role: String, val active: Boolean)
 
 object PortfolioData {
@@ -62,5 +64,9 @@ object PortfolioData {
         Job("2021", "Universidade Anhembi Morumbi", "Análise e Desenvolvimento de Sistemas", active = false),
     )
 
-    val socialLinks = listOf("LinkedIn", "GitHub", "YouTube")
+    val socialLinks = listOf(
+        SocialLink("LinkedIn", "https://www.linkedin.com/in/ana-clara-guerra/"),
+        SocialLink("GitHub", "https://github.com/GuerraAna"),
+        SocialLink("YouTube", "https://www.youtube.com/@AnaGuerra-is6nr"),
+    )
 }
