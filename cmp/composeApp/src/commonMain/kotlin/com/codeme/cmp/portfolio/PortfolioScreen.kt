@@ -74,10 +74,10 @@ fun PortfolioScreen() {
                 SectionTitle("Habilidades", "01")
                 SkillsGrid(columns = if (compact) 1 else 3)
                 Spacer(Modifier.height(56.dp))
-                SectionTitle("Destaques & certificações", "02")
+                SectionTitle("Reconhecimentos e prêmios", "02")
                 ProjectsGrid(columns = if (compact) 1 else 3)
                 Spacer(Modifier.height(56.dp))
-                SectionTitle("Trajetória", "03")
+                SectionTitle("Experiência e formação", "03")
                 JobsList()
                 Spacer(Modifier.height(40.dp))
                 Footer(compact)
@@ -157,7 +157,7 @@ private fun HeroIntro() {
     Text(PortfolioData.BIO, color = PortfolioColors.TextSecondary, fontSize = 16.sp, lineHeight = 26.sp)
     Spacer(Modifier.height(28.dp))
     Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-        Pill(text = "Ver projetos", brush = PortfolioColors.accentGradient)
+        Pill(text = "Ver prêmios", brush = PortfolioColors.accentGradient)
         Pill(text = "Baixar CV", background = PortfolioColors.ChipBackground)
     }
     Spacer(Modifier.height(36.dp))
@@ -192,7 +192,7 @@ private fun ContactCard(modifier: Modifier) {
         }
         Spacer(Modifier.height(20.dp))
         InfoRow("Email", PortfolioData.EMAIL)
-        InfoRow("Empresa", PortfolioData.BASE)
+        InfoRow("Base", PortfolioData.BASE)
         InfoRow("Foco", PortfolioData.FOCUS)
     }
 }
