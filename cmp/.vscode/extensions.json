@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "fwcd.kotlin",
+    "vscjava.vscode-gradle"
+  ],
+  "unwantedRecommendations": [
+    "mathiasfrohlich.Kotlin"
+  ]
+}

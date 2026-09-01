@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "path": "cmp"
+    }
+  ],
+  "settings": {
+    "kotlin.languageServer.enabled": true,
+    "kotlin.debugAdapter.enabled": true,
+    "kotlin.externalSources.autoConvertToKotlin": true,
+    "files.exclude": {
+      "**/build": true,
+      "**/.gradle": true,
+      "**/.idea": true
+    }
+  }
+}
