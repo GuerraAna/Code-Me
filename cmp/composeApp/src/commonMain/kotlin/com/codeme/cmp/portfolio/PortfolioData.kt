@@ -1,12 +1,19 @@
 package com.codeme.cmp.portfolio
 
+import codeme.composeapp.generated.resources.Res
+import codeme.composeapp.generated.resources.anhembi
+import codeme.composeapp.generated.resources.itau
+import codeme.composeapp.generated.resources.mercado_pago
+import codeme.composeapp.generated.resources.ntt_data
+import org.jetbrains.compose.resources.DrawableResource
+
 data class Skill(val name: String, val level: Float)
 
 data class Project(val name: String, val year: String, val description: String)
 
 data class SocialLink(val label: String, val url: String)
 
-data class Job(val year: String, val company: String, val role: String, val active: Boolean)
+data class Job(val year: String, val company: String, val role: String, val active: Boolean, val logo: DrawableResource? = null)
 
 object PortfolioData {
     const val NAME = "Ana Clara Guerra"
@@ -58,10 +65,10 @@ object PortfolioData {
     )
 
     val jobs = listOf(
-        Job("2025", "Itaú Unibanco", "Engenheira de Software", active = true),
-        Job("2024", "Mercado Livre", "Engenheira de Software", active = false),
-        Job("2021", "NTT DATA Europe & LATAM", "Android Developer · cliente Itaú (PIX, TED/TEF, Open Finance)", active = false),
-        Job("2021", "Universidade Anhembi Morumbi", "Análise e Desenvolvimento de Sistemas", active = false),
+        Job("2025", "Itaú Unibanco", "Engenheira de Software", active = true, logo = Res.drawable.itau),
+        Job("2024", "Mercado Livre", "Engenheira de Software", active = false, logo = Res.drawable.mercado_pago),
+        Job("2021", "NTT DATA Europe & LATAM", "Android Developer · cliente Itaú (PIX, TED/TEF, Open Finance)", active = false, logo = Res.drawable.ntt_data),
+        Job("2021", "Universidade Anhembi Morumbi", "Análise e Desenvolvimento de Sistemas", active = false, logo = Res.drawable.anhembi),
     )
 
     val socialLinks = listOf(

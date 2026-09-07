@@ -1,5 +1,6 @@
 package com.codeme.cmp.portfolio
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -30,12 +31,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import codeme.composeapp.generated.resources.Res
+import codeme.composeapp.generated.resources.eu_linkedin
+import org.jetbrains.compose.resources.painterResource
 
 private val CardShape = RoundedCornerShape(16.dp)
 private val PillShape = RoundedCornerShape(50)
@@ -176,15 +181,14 @@ private fun HeroIntro() {
 private fun ContactCard(modifier: Modifier) {
     Card(modifier) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Box(
+            Image(
+                painter = painterResource(Res.drawable.eu_linkedin),
+                contentDescription = null,
                 modifier = Modifier
                     .size(64.dp)
-                    .clip(RoundedCornerShape(12.dp))
-                    .background(Brush.linearGradient(listOf(Color(0xFF4A6CF7), Color(0xFF9BB8FF)))),
-                contentAlignment = Alignment.Center,
-            ) {
-                Text(PortfolioData.INITIALS, color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-            }
+                    .clip(RoundedCornerShape(12.dp)),
+                contentScale = ContentScale.Crop,
+            )
             Spacer(Modifier.width(14.dp))
             Column {
                 Text(PortfolioData.NAME, color = PortfolioColors.TextPrimary, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
@@ -287,7 +291,16 @@ private fun JobsList() {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(job.year, color = PortfolioColors.TextMuted, fontSize = 12.sp, modifier = Modifier.width(56.dp))
                     Box(Modifier.width(1.dp).height(36.dp).background(PortfolioColors.SurfaceBorder))
-                    Spacer(Modifier.width(20.dp))
+                    Spacer(Modifier.width(12.dp))
+                    job.logo?.let { logo ->
+                        Image(
+                            painter = painterResource(logo),
+                            contentDescription = null,
+                            modifier = Modifier.size(36.dp),
+                            contentScale = ContentScale.Fit,
+                        )
+                        Spacer(Modifier.width(12.dp))
+                    }
                     Column(Modifier.weight(1f)) {
                         Text(job.company, color = PortfolioColors.TextPrimary, fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
                         Text(job.role, color = PortfolioColors.TextSecondary, fontSize = 13.sp)
