@@ -45,3 +45,10 @@ Project root for all commands: `cmp/`. Use the Gradle wrapper: `./gradlew`.
 - wasmJs tasks download Node/Yarn/binaryen on first run — expect a slow first build.
 - Port already in use on web run → read the actual port from the console output.
 - iOS build failures in shared framework → run `./gradlew :composeApp:embedAndSignAppleFrameworkForXcode` to reproduce outside Xcode.
+- kotlin-lsp (VS Code) project import fails in `:composeApp:commonizeNativeDistribution` with
+  `ClassNotFoundException: com.intellij.platform.core.nio.fs.MultiRoutingFileSystemProvider` →
+  known kotlin-lsp bug: the LS leaks `java.nio.file.spi.DefaultFileSystemProvider` into the
+  commonizer's child JVM. Workaround: warm the cache from a normal terminal with
+  `JAVA_HOME=/opt/homebrew/opt/openjdk@21 ./gradlew :composeApp:prepareKotlinIdeaImport`
+  (tasks succeed outside the LS and stay cached/UP-TO-DATE for the next import),
+  then restart the language server in VS Code.
