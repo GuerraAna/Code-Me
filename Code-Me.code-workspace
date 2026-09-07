@@ -8,10 +8,35 @@
     "kotlin.languageServer.enabled": true,
     "kotlin.debugAdapter.enabled": true,
     "kotlin.externalSources.autoConvertToKotlin": true,
+    "kotlin.indexing.enabled": true,
+    "kotlin.compiler.jvm.target": "default",
+    "editor.gotoLocation.multipleDefinitions": "goto",
+    "editor.gotoLocation.multipleReferences": "goto",
     "files.exclude": {
       "**/build": true,
       "**/.gradle": true,
-      "**/.idea": true
+      "**/.idea": true,
+      "**/.kotlin": true
+    },
+    "files.watcherExclude": {
+      "**/build/**": true,
+      "**/.gradle/**": true,
+      "**/.kotlin/**": true
+    },
+    "search.exclude": {
+      "**/build": true,
+      "**/.gradle": true,
+      "**/.kotlin": true
     }
+  },
+  "extensions": {
+    "recommendations": [
+      "fwcd.kotlin",
+      "vscjava.vscode-gradle",
+      "redhat.vscode-xml"
+    ],
+    "unwantedRecommendations": [
+      "mathiasfrohlich.Kotlin"
+    ]
   }
 }
