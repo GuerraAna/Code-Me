@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code — mantém settings.json e extensions.json versionados,
+# ignora apenas cache local
+.vscode/.ropeproject
+.vscode/*.log
+
+# JetBrains Fleet / IDEs
+.fleet/
+.idea/
+*.iml
+
+# Kotlin / Gradle build output
+.gradle/
+.kotlin/
+**/build/
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+
+# iOS / Xcode
+xcuserdata/
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata

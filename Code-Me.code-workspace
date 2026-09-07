@@ -5,13 +5,62 @@
     }
   ],
   "settings": {
-    "kotlin.languageServer.enabled": true,
-    "kotlin.debugAdapter.enabled": true,
-    "kotlin.externalSources.autoConvertToKotlin": true,
+    // fwcd.kotlin desativado: conflita com o Kotlin LSP oficial da JetBrains
+    "kotlin.languageServer.enabled": false,
+    "kotlin.debugAdapter.enabled": false,
+
+    // Kotlin by JetBrains (kotlin-lsp oficial, baseado no IntelliJ)
+    "intellij.buildTool": "gradle",
+
+    // Spell checker: termos do ecossistema Kotlin/Android/Compose
+    "cSpell.words": [
+      "androidx",
+      "codeme",
+      "composable",
+      "coroutines",
+      "jetbrains",
+      "kotlinx",
+      "kotlinc",
+      "multiplatform",
+      "viewmodel",
+      "wasmJs"
+    ],
+    "cSpell.ignorePaths": [
+      "**/build/**",
+      "**/.gradle/**",
+      "**/gradle-wrapper.properties",
+      "**/*.lockfile"
+    ],
+
+    // Navegação direta sem painel "peek"
+    "editor.gotoLocation.multipleDefinitions": "goto",
+    "editor.gotoLocation.multipleReferences": "goto",
+
     "files.exclude": {
       "**/build": true,
       "**/.gradle": true,
-      "**/.idea": true
+      "**/.idea": true,
+      "**/.kotlin": true
+    },
+    "files.watcherExclude": {
+      "**/build/**": true,
+      "**/.gradle/**": true,
+      "**/.kotlin/**": true
+    },
+    "search.exclude": {
+      "**/build": true,
+      "**/.gradle": true,
+      "**/.kotlin": true
     }
+  },
+  "extensions": {
+    "recommendations": [
+      "JetBrains.kotlin-server",
+      "vscjava.vscode-gradle"
+    ],
+    "unwantedRecommendations": [
+      "fwcd.kotlin",
+      "mathiasfrohlich.Kotlin"
+    ]
   }
 }
