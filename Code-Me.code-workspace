@@ -5,13 +5,17 @@
     }
   ],
   "settings": {
-    "kotlin.languageServer.enabled": true,
-    "kotlin.debugAdapter.enabled": true,
-    "kotlin.externalSources.autoConvertToKotlin": true,
-    "kotlin.indexing.enabled": true,
-    "kotlin.compiler.jvm.target": "default",
+    // fwcd.kotlin desativado: conflita com o Kotlin LSP oficial da JetBrains
+    "kotlin.languageServer.enabled": false,
+    "kotlin.debugAdapter.enabled": false,
+
+    // Kotlin by JetBrains (kotlin-lsp oficial, baseado no IntelliJ)
+    "intellij.buildTool": "gradle",
+
+    // Navegação direta sem painel "peek"
     "editor.gotoLocation.multipleDefinitions": "goto",
     "editor.gotoLocation.multipleReferences": "goto",
+
     "files.exclude": {
       "**/build": true,
       "**/.gradle": true,
@@ -31,11 +35,11 @@
   },
   "extensions": {
     "recommendations": [
-      "fwcd.kotlin",
-      "vscjava.vscode-gradle",
-      "redhat.vscode-xml"
+      "JetBrains.kotlin-server",
+      "vscjava.vscode-gradle"
     ],
     "unwantedRecommendations": [
+      "fwcd.kotlin",
       "mathiasfrohlich.Kotlin"
     ]
   }
