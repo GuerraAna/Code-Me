@@ -12,6 +12,26 @@
     // Kotlin by JetBrains (kotlin-lsp oficial, baseado no IntelliJ)
     "intellij.buildTool": "gradle",
 
+    // Spell checker: termos do ecossistema Kotlin/Android/Compose
+    "cSpell.words": [
+      "androidx",
+      "codeme",
+      "composable",
+      "coroutines",
+      "jetbrains",
+      "kotlinx",
+      "kotlinc",
+      "multiplatform",
+      "viewmodel",
+      "wasmJs"
+    ],
+    "cSpell.ignorePaths": [
+      "**/build/**",
+      "**/.gradle/**",
+      "**/gradle-wrapper.properties",
+      "**/*.lockfile"
+    ],
+
     // Navegação direta sem painel "peek"
     "editor.gotoLocation.multipleDefinitions": "goto",
     "editor.gotoLocation.multipleReferences": "goto",
