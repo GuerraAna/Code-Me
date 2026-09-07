@@ -1,46 +1,61 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop (JVM).
+# Code-Me
 
-* [/iosApp](./iosApp/iosApp) contains an iOS application. Even if you’re sharing your UI with Compose Multiplatform,
-  you need this entry point for your iOS app. This is also where you should add SwiftUI code for your project.
+This is a Kotlin Compose Multiplatform project targeting Android, iOS, Web (Wasm) and Desktop (JVM).
 
-* [/shared](./shared/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./shared/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./shared/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./shared/src/jvmMain/kotlin)
-    folder is the appropriate location.
+All Gradle commands must be run from the [`cmp/`](./cmp) directory:
 
-### Running the apps
+```bash
+cd cmp
+```
 
-Use the run configurations provided by the run widget in your IDE's toolbar. You can also use these commands and options:
+## Project structure
 
-- Android app: `./gradlew :androidApp:assembleDebug`
-- Desktop app:
-  - Hot reload: `./gradlew :desktopApp:hotRun --auto`
-  - Standard run: `./gradlew :desktopApp:run`
-- Web app:
-  - Wasm target (faster, modern browsers): `./gradlew :webApp:wasmJsBrowserDevelopmentRun`
-  - JS target (slower, supports older browsers): `./gradlew :webApp:jsBrowserDevelopmentRun`
-- iOS app: open the [/iosApp](./iosApp) directory in Xcode and run it from there.
+* [`cmp/composeApp`](./cmp/composeApp) — the shared Compose Multiplatform application. Its `src` folder contains:
+  - `commonMain` — code shared across all targets
+  - `androidMain`, `iosMain`, `desktopMain`, `wasmJsMain` — platform-specific code
+* [`cmp/iosApp`](./cmp/iosApp) — the iOS application entry point (Xcode project). Add SwiftUI code here if needed.
 
-### Running tests
+## Prerequisites
 
-Use the run button in your IDE's editor gutter, or run tests using Gradle tasks:
+- **JDK 17 or 21** — JDK 26+ is not supported by this Gradle version. The project is configured to use
+  Homebrew's OpenJDK 21 via `org.gradle.java.home` in [`cmp/gradle.properties`](./cmp/gradle.properties).
+  Adjust that property if your JDK lives elsewhere.
+- **Android**: Android SDK installed and an emulator running or a device connected (`adb devices`).
+- **iOS**: Xcode (macOS only).
+- **Web**: a browser with Wasm GC support — Chrome 119+ or Firefox 120+.
 
-- Android tests: `./gradlew :shared:testAndroidHostTest`
-- Desktop tests: `./gradlew :shared:jvmTest`
-- Web tests:
-  - Wasm target: `./gradlew :shared:wasmJsTest`
-  - JS target: `./gradlew :shared:jsTest`
-- iOS tests: `./gradlew :shared:iosSimulatorArm64Test`
+## Running the apps
+
+- **Android**: `./gradlew :composeApp:installDebug` (installs on a connected device/emulator)
+  or `./gradlew :composeApp:assembleDebug` to only build the APK.
+- **Desktop**:
+  - Standard run: `./gradlew :composeApp:run`
+  - Native installer (.dmg/.msi/.deb): `./gradlew :composeApp:packageDmg` (or `packageMsi`/`packageDeb`)
+- **Web** (Wasm target): `./gradlew :composeApp:wasmJsBrowserDevelopmentRun`, then open
+  `http://localhost:8080` (check the console output if the port differs).
+- **iOS**: open [`cmp/iosApp/iosApp.xcodeproj`](./cmp/iosApp/iosApp.xcodeproj) in Xcode and run it from there.
+  The Kotlin framework is built automatically by the Xcode build.
+
+### Running everything at once
+
+```bash
+cd cmp
+./gradlew :composeApp:run & \
+./gradlew :composeApp:wasmJsBrowserDevelopmentRun & \
+./gradlew :composeApp:installDebug & \
+open iosApp/iosApp.xcodeproj & \
+wait
+```
+
+## Running tests
+
+- Android: `./gradlew :composeApp:testDebugUnitTest`
+- Desktop: `./gradlew :composeApp:desktopTest`
+- Web (Wasm): `./gradlew :composeApp:wasmJsBrowserTest`
+- iOS: `./gradlew :composeApp:iosSimulatorArm64Test`
 
 ---
 
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
 [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
 [Kotlin/Wasm](https://kotl.in/wasm/)…
-
-We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
-If you face any issues, please report them on [YouTrack](https://youtrack.jetbrains.com/newIssue?project=CMP).# Code-Me

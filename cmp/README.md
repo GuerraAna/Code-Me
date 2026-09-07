@@ -61,12 +61,14 @@ Wasm GC support is currently under
 
 To build and run the application:
 
-1. In IntelliJ IDEA, open the repository.
+1. In IntelliJ IDEA or Android Studio, open this directory (`cmp/`).
 2. Run the application by typing one of the following Gradle commands in the terminal:
 
-* **Web version:**
+* **Web version (Wasm):**
 
-  `./gradlew :composeApp:wasmJsBrowserProductionRun`
+  `./gradlew :composeApp:wasmJsBrowserDevelopmentRun` (development, with hot reload)
+  <br>
+  `./gradlew :composeApp:wasmJsBrowserProductionRun` (production build)
   <br>&nbsp;<br>
 
   Once the application starts, open the following URL in your browser:
@@ -78,9 +80,39 @@ To build and run the application:
   > after building the application.
 <br>&nbsp;<br>
 
-* **Desktop version:**
+* **Desktop version (JVM):**
 
   `./gradlew :composeApp:run`
+  <br>&nbsp;<br>
+
+  To generate a native installer (`.dmg` on macOS, `.msi` on Windows, `.deb` on Linux):
+
+  `./gradlew :composeApp:packageDmg`
+<br>&nbsp;<br>
+
+* **Android version:**
+
+  With an emulator running or a device connected (`adb devices`):
+
+  `./gradlew :composeApp:installDebug`
+
+  Or to only build the APK (output in `composeApp/build/outputs/apk/`):
+
+  `./gradlew :composeApp:assembleDebug`
+<br>&nbsp;<br>
+
+* **iOS version (macOS only):**
+
+  Open `iosApp/iosApp.xcodeproj` in Xcode and run it from there (▶️).
+  The shared Kotlin framework (`CodeMe`) is compiled automatically during the Xcode build.
+
+### Prerequisites
+
+* **JDK 17 or 21** — newer JDKs are not supported by this Gradle version.
+  The JDK path is set via `org.gradle.java.home` in [`gradle.properties`](./gradle.properties).
+* **Android**: Android SDK + emulator or device.
+* **iOS**: Xcode.
+* **Web**: a browser with Wasm GC support (see the Browser section above).
 
 ## Feedback and questions
 
