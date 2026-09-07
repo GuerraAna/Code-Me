@@ -14,6 +14,9 @@ Project root for all commands: `cmp/`. Use the Gradle wrapper: `./gradlew`.
   `gradle.properties` via `org.gradle.java.home`).
 - Gradle wrapper: Gradle 8.14.5, Kotlin 2.0.21.
 - Working directory for all commands below: `cmp/`.
+- **Android SDK** at `~/Library/Android/sdk`, wired via `sdk.dir` in `cmp/local.properties`
+  (gitignored, machine-specific). Required by Gradle AND by the kotlin-lsp import in VS Code —
+  without it the IDE sync fails with "SDK location not found".
 
 ## Per-platform run commands
 
@@ -36,6 +39,7 @@ Project root for all commands: `cmp/`. Use the Gradle wrapper: `./gradlew`.
 ## Verification after changes
 
 - Compile check without running a full app: `./gradlew :composeApp:compileKotlinDesktop` (fast JVM compile of common code).
+- iOS compile check: `./gradlew :composeApp:compileKotlinIosSimulatorArm64` (add `compileKotlinIosX64 compileKotlinIosArm64` to cover all iOS targets).
 - Full check: `./gradlew :composeApp:check`.
 - Wasm browser runs need a browser with Wasm GC (Chrome 119+, Firefox 120+; Safari is unsupported).
 

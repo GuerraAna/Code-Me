@@ -3,10 +3,9 @@
 .AppleDouble
 .LSOverride
 
-# VS Code — mantém settings.json e extensions.json versionados,
-# ignora apenas cache local
-.vscode/.ropeproject
-.vscode/*.log
+# VS Code — configuração partilhada vive em Code-Me.code-workspace;
+# ignora overrides locais do editor
+.vscode/
 
 # JetBrains Fleet / IDEs
 .fleet/
@@ -29,3 +28,6 @@ xcuserdata/
 !*.xcodeproj/xcshareddata/
 !*.xcodeproj/project.xcworkspace/
 !*.xcworkspace/contents.xcworkspacedata
+
+# Local env / secrets
+.env*
