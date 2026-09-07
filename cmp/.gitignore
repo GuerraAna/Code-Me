@@ -3,7 +3,6 @@
 .kotlin
 **/build/
 xcuserdata
-!src/**/build/
 local.properties
 .idea
 .DS_Store
@@ -16,4 +15,4 @@ captures
 !*.xcodeproj/project.xcworkspace/
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
-.vscode/settings.json
+.vscode/
