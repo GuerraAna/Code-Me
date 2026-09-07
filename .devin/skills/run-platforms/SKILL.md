@@ -36,6 +36,7 @@ Project root for all commands: `cmp/`. Use the Gradle wrapper: `./gradlew`.
 ## Verification after changes
 
 - Compile check without running a full app: `./gradlew :composeApp:compileKotlinDesktop` (fast JVM compile of common code).
+- iOS compile check: `./gradlew :composeApp:compileKotlinIosSimulatorArm64` (add `compileKotlinIosX64 compileKotlinIosArm64` to cover all iOS targets).
 - Full check: `./gradlew :composeApp:check`.
 - Wasm browser runs need a browser with Wasm GC (Chrome 119+, Firefox 120+; Safari is unsupported).
 
